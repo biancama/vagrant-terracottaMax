@@ -1,0 +1,7 @@
+### Vagrant ###
+.vagrant/
+vagrant_ansible_inventory*
+#intellij
+*.iml
+.idea
+.project

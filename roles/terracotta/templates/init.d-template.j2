@@ -1,0 +1,54 @@
+#!/bin/sh
+SERVICE_NAME={{service_name}}
+DAEMON_FOLDER={{daemon_folder}}
+DAEMON_START_SCRIPT="{{daemon_start_script}}"
+DAEMON_STOP_SCRIPT="{{daemon_stop_script}}"
+DAEMON_OPTS={{daemon_opts}}
+
+start_service() {
+  echo -n " * Starting $SERVICE_NAME... "
+  ${DAEMON_FOLDER}/${DAEMON_START_SCRIPT} $DAEMON_OPTS &
+  e=$?
+  if [ $e -eq 1 ]; then
+    echo "already running"
+    return
+  fi
+
+  if [ $e -eq 255 ]; then
+    echo "couldn't start :("
+    exit 1
+  fi
+
+  echo "done"
+}
+
+stop_service() {
+  echo -n " * Stopping $SERVICE_NAME... "
+  ${DAEMON_FOLDER}/${DAEMON_STOP_SCRIPT}
+  e=$?
+  if [ $e -eq 1 ]; then
+    echo "not running"
+    return
+  fi
+
+  echo "done"
+}
+
+case "$1" in
+  start)
+    start_service
+    ;;
+  stop)
+    stop_service
+    ;;
+  restart)
+    stop_service
+    start_service
+    ;;
+  *)
+    echo "Usage: service $SERVICE_NAME {start|stop|restart}" >&2
+    exit 1   
+    ;;
+esac
+
+exit 0

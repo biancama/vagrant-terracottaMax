@@ -1,0 +1,52 @@
+- name: ensure terracotta installation directory exists
+  file:
+    path: /opt/terracotta/
+    state: directory
+
+- name: ensure terracotta server-data directory exists
+  file:
+    path: /opt/terracotta/server-data
+    state: directory
+ 
+- name: ensure terracotta server-logs directory exists
+  file:
+    path: /opt/terracotta/server-logs
+    state: directory
+
+- name: ensure terracotta server-index directory exists
+  file:
+    path: /opt/terracotta/server-index
+    state: directory
+
+- name: ensure terracotta client-logs directory exists
+  file:
+    path: /opt/terracotta/client-logs
+    state: directory
+ 
+- name: ensure terracotta download directory exists
+  file:
+    path: /tmp/terracotta/
+    state: directory
+ 
+- name: download terracotta tar file
+  get_url: 
+      url: http://d2zwv9pap9ylyd.cloudfront.net/bigmemory-max-4.1.3.tar.gz 
+      dest: /tmp/terracotta/
+     
+- name: untar terracotta tar file
+  unarchive: 
+    src: /tmp/terracotta/bigmemory-max-4.1.3.tar.gz  
+    dest: /opt/terracotta/
+    copy: no
+    
+- name: copy config file
+  copy: 
+      src: tc-config.xml 
+      dest: /opt/terracotta/
+
+- name: copy license file
+  copy: 
+      src: terracotta-license.key
+      dest: /opt/terracotta/bigmemory-max-4.1.3
+
+ 

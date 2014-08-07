@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+  All content copyright (c) 2003-2008 Terracotta, Inc.,
+  except as may otherwise be noted in a separate copyright notice.
+  All rights reserved
+
+-->
+
+<!-- This config file is used by the server and bootjar tool when none is specified. -->
+
+<tc:tc-config xmlns:tc="http://www.terracotta.org/config"
+	          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-9.xsd">
+              
+   	<tc-properties>
+    	<property name="productkey.path" value="/opt/terracotta/bigmemory-max-4.1.3/terracotta-license.key" />
+    	<!-- Other tc.properties here. -->
+    </tc-properties>
+
+    <servers>
+        <server>
+            <data>/opt/terracotta/server-data</data>
+            <logs>/opt/terracotta/server-logs</logs>
+            <index>/opt/terracotta/server-index</index>
+        </server>
+    </servers>
+
+  <clients>
+      <logs>/var/log/terracotta/client-logs</logs>
+  </clients>
+</tc:tc-config>

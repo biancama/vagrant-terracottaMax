@@ -1,0 +1,25 @@
+- include_vars: terracotta-init.d.yml
+
+- name: set JAVA_HOME environment variable
+  lineinfile: dest={{ daemon_folder }}/{{ daemon_start_script }} insertbefore=BOF line='export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64'
+  when: ansible_os_family == "Debian"
+
+- name: set JAVA_HOME environment variable
+  lineinfile: dest={{ daemon_folder }}/{{ daemon_start_script }} insertbefore=BOF line='export JAVA_HOME=/usr/lib/jvm/jre'
+  when: ansible_os_family == 'RedHat'
+
+- name: set JAVA_HOME environment variable
+  lineinfile: dest={{ daemon_folder }}/{{ daemon_stop_script }} insertbefore=BOF line='export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64'
+  when: ansible_os_family == "Debian"
+
+- name: set JAVA_HOME environment variable
+  lineinfile: dest={{ daemon_folder }}/{{ daemon_stop_script }} insertbefore=BOF line='export JAVA_HOME=/usr/lib/jvm/jre'
+  when: ansible_os_family == 'RedHat'
+
+- name: Add terracotta init daemon script
+  template: src=init.d-template.j2 dest=/etc/init.d/terracotta mode=0751
+  notify: 
+      - start terracotta
+     
+
+ 

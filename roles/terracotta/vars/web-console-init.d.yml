@@ -1,0 +1,5 @@
+service_name: tmc
+daemon_folder: /opt/terracotta/bigmemory-max-4.1.3/tools/management-console/bin
+daemon_start_script: start-tmc.sh
+daemon_stop_script: stop-tmc.sh
+daemon_opts: -Dcom.tc.productkey.path=/opt/terracotta/license/terracotta-license.key

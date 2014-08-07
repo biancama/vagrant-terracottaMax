@@ -1,0 +1,5 @@
+service_name: terracotta
+daemon_folder: /opt/terracotta/bigmemory-max-4.1.3/server/bin
+daemon_start_script: start-tc-server.sh
+daemon_stop_script: stop-tc-server.sh
+daemon_opts: -f /opt/terracotta/tc-config.xml

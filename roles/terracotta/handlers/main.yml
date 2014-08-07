@@ -1,0 +1,10 @@
+- name: start terracotta
+  action: service name=terracotta state=started
+  async: 60
+  poll: 0
+
+- name: start tmc
+  action: service name=tmc state=started
+  async: 60
+  poll: 0
+  

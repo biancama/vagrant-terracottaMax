@@ -1,0 +1,8 @@
+---
+# This playbook install terracotta                                  
+
+
+- include: install-terracotta.yml
+- include: start-terracotta-server.yml
+- include: start-web-console-server.yml
+
