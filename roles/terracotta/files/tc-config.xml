@@ -14,15 +14,25 @@
               xsi:schemaLocation="http://www.terracotta.org/schema/terracotta-9.xsd">
               
    	<tc-properties>
-    	<property name="productkey.path" value="/opt/terracotta/bigmemory-max-4.1.3/terracotta-license.key" />
+    	
     	<!-- Other tc.properties here. -->
     </tc-properties>
 
     <servers>
-        <server>
+        <server host="193.168.33.20" name="My Server">
             <data>/opt/terracotta/server-data</data>
             <logs>/opt/terracotta/server-logs</logs>
             <index>/opt/terracotta/server-index</index>
+            <tsa-port>9510</tsa-port>
+            <jmx-port>9520</jmx-port>
+            <tsa-group-port>9530</tsa-group-port>
+            <!-- Enable BigMemory on the server. -->
+            <dataStorage size="4g">
+               <offheap size="2g"/> 
+               <!-- Hybrid storage is optional. -->
+               <hybrid/> 
+           </dataStorage>
+
         </server>
     </servers>
 
