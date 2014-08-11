@@ -10,7 +10,13 @@ What gets installed:
 
 If you want to install Terracotta on a VM using Vagrant, you first need to install [Vagrant](http://www.vagrantup.com/) and a Virtual Machine provider of choice ([VirtualBox](https://www.virtualbox.org/) is free and works out of the box with Vagrant).
 
+Vagrant uses a plugin to automatically modifies /etc/hosts of guest and host machine
 
+To install the plugin run
+vagrant plugin install vagrant-hostmanager
+
+For further information [Vagrant hostmanager](https://github.com/smdahlen/vagrant-hostmanager)
+  
 
 ```
 $ git clone https://github.com/biancama/vagrant-terracottaMax

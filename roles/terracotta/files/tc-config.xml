@@ -19,7 +19,7 @@
     </tc-properties>
 
     <servers>
-        <server host="193.168.33.20" name="My Server">
+        <server host="terracotta-server" name="My Server">
             <data>/opt/terracotta/server-data</data>
             <logs>/opt/terracotta/server-logs</logs>
             <index>/opt/terracotta/server-index</index>
@@ -35,8 +35,10 @@
 
         </server>
     </servers>
-
+<!-- 
   <clients>
       <logs>/var/log/terracotta/client-logs</logs>
   </clients>
+-->  
+  
 </tc:tc-config>

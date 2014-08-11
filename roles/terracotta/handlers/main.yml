@@ -1,10 +1,10 @@
 - name: start terracotta
-  action: service name=terracotta state=restarted
+  action: service name=terracotta state=restarted enabled=yes
   async: 60
   poll: 0
 
 - name: start tmc
-  action: service name=tmc state=restarted
+  action: service name=tmc state=restarted enabled=yes
   async: 60
   poll: 0
   
